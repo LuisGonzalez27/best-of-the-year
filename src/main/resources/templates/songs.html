@@ -11,7 +11,7 @@
 
 <h1>Song list</h1>
 <ul th:each="song : ${songs}">
-    <li th:text="${song.name}"></li>
+    <li><a th:href="@{/songs/{id}(id=${song.id})}"> [[${song.name}]] </a></li>
 </ul>
 
 

@@ -11,7 +11,7 @@
 
     <h1>Movie list</h1>
     <ul th:each="film : ${films}">
-        <li th:text="${film.name}"></li>
+        <li><a th:href="@{/movies/{id}(id=${film.id})}">[[${film.name}]]</a></li>
     </ul>
 
 

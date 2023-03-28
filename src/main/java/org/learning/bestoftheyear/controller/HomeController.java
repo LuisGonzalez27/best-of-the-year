@@ -6,6 +6,7 @@ import org.learning.bestoftheyear.classes.Song;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
@@ -33,48 +34,51 @@ public class HomeController {
         return "songs";
     }
 
-    List<Movie> getBestMovies(){
+    @GetMapping("/movies/{id}")
+    public String idMovie(Model model,@PathVariable("id") String id) {
+        List<Movie> movies = getBestMovies();
+        model.addAttribute("movie", movies.get(Integer.parseInt(id) -1));
+        return "movie";
+    }
+
+    @GetMapping("/songs/{id}")
+    public String idSong(Model model,@PathVariable("id") String id) {
+        List<Song> songs = getBestSongs();
+        model.addAttribute("song", songs.get(Integer.parseInt(id) -1));
+        return  "song";
+    }
+
+    private List<Movie> getBestMovies(){
 
         List<Movie> movies = new ArrayList<Movie>();
 
-        Movie film = new Movie(1, "Saw");
-        movies.add(film);
+        movies.add(new Movie(1, "Saw"));
 
-        Movie film2 = new Movie(2, "Megan");
-        movies.add(film2);
+        movies.add(new Movie(2, "Megan"));
 
-        Movie film3 = new Movie(3, "Get Out");
-        movies.add(film3);
+        movies.add(new Movie(3, "Get Out"));
 
-        Movie film4 = new Movie(4, "The Babadook ");
-        movies.add(film4);
+        movies.add(new Movie(4, "The Babadook"));
 
-        Movie film5 = new Movie(5, "Watcher");
-        movies.add(film5);
+        movies.add(new Movie(5, "Watcher"));
 
         return movies;
 
     }
 
-    List<Song> getBestSongs(){
+    private List<Song> getBestSongs(){
 
         List<Song> songs = new ArrayList<Song>();
 
-        Song song = new Song(1, "We Will Rock You");
-        songs.add(song);
+        songs.add(new Song(1, "We Will Rock You"));
 
-        Song song2 = new Song(2, "Don't Stop Me Now");
-        songs.add(song2);
+        songs.add(new Song(2, "Don't Stop Me Now"));
 
-        Song song3 = new Song(3, "Radio Ga Ga");
-        songs.add(song3);
+        songs.add(new Song(3, "Radio Ga Ga"));
 
-        Song song4 = new Song(4, "I Want to Break Free");
-        songs.add(song4);
+        songs.add(new Song(4, "I Want to Break Free"));
 
-        Song song5 = new Song(5, "Another One Bites the Dust");
-        songs.add(song5);
-
+        songs.add(new Song(5, "Another One Bites the Dust"));
 
         return songs;
 

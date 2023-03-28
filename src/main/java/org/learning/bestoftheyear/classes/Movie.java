@@ -1,8 +1,8 @@
 package org.learning.bestoftheyear.classes;
 
 public class Movie {
-    int id;
-    String name;
+    private int id;
+    private String name;
 
     public Movie(int id, String name){
         super();
@@ -11,5 +11,8 @@ public class Movie {
     }
     public String getName(){
         return name;
+    }
+    public int getId() {
+        return id;
     }
 }
