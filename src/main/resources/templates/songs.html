@@ -5,16 +5,28 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <div th:replace="~{fragments :: resources}"></div>
+    <th:block th:replace="~{fragments :: resources}"></th:block>
     <title>Songs</title>
 </head>
 <body>
+    <nav th:replace="~{fragments :: navbar}"></nav>
 
-<h1>Song list</h1>
-<ul th:each="song : ${songs}">
-    <li><a th:href="@{/songs/{id}(id=${song.id})}"> [[${song.name}]] </a></li>
-</ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto text-center">
+                <h1>Best songs</h1>
+                <ul class="list-group" th:each="song : ${songs}" id="list">
+                    <li class="list-group-item"><a th:href="@{/songs/{id}(id=${song.id})}" style="text-decoration: none;">
+                        [[${song.name}]] </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
+    </div>
+
+
+    <th:block th:replace="~{fragments :: scripts}"></th:block>
 
 </body>
 </html>

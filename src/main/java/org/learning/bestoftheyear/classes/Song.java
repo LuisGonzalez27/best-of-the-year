@@ -1,8 +1,8 @@
 package org.learning.bestoftheyear.classes;
 
 public class Song {
-    int id;
-    String name;
+    private int id;
+    private String name;
 
     public Song(int id, String name){
         super();

@@ -5,16 +5,29 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <div th:replace="~{fragments :: resources}"></div>
+    <th:block th:replace="~{fragments :: resources}"></th:block>
     <title>Movies</title>
 </head>
 <body>
+    <nav th:replace="~{fragments :: navbar}"></nav>
 
-    <h1>Movie list</h1>
-    <ul th:each="film : ${films}">
-        <li><a th:href="@{/movies/{id}(id=${film.id})}">[[${film.name}]]</a></li>
-    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto text-center">
+                <h1>Best movies</h1>
+                <ul class="list-group" th:each="film : ${films}">
+                    <li class="list-group-item"><a th:href="@{/movies/{id}(id=${film.id})}" style="text-decoration: none;">
+                        [[${film.name}]]</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
+    </div>
+
+
+
+    <th:block th:replace="~{fragments :: scripts}"></th:block>
 
 </body>
 </html>

@@ -5,20 +5,24 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <div th:replace="~{fragments :: resources}"></div>
+    <th:block th:replace="~{fragments :: resources}"></th:block>
     <title>Home</title>
 </head>
 <body>
-    <nav><img alt="logo" th:src="@{logo.png}"></nav>
-    <h1>Hello Spring!</h1>
-    <h1 th:text="'Best of the year by ' + ${name}"></h1>
+    <nav th:replace="~{fragments :: navbar}"></nav>
 
-    <ul>
-        <li><a th:href="@{/movies}">Movies</a></li>
-        <li><a th:href="@{/songs}">Songs</a></li>
-    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto text-center">
+                <h1>Hello Spring!</h1>
+                <h2 th:text="'Best of the year by ' + ${name}"></h2>
+            </div>
+        </div>
+
+    </div>
 
 
+    <th:block th:replace="~{fragments :: scripts}"></th:block>
 
 </body>
 </html>
